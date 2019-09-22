@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class Triangle {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter three sides of the triangle: ");
+        int side1 = input.nextInt();
+        int side2 = input.nextInt();
+        int side3 = input.nextInt();
+        if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1){
+            int perimeter = side1 + side2 + side3;
+            System.out.println("The perimeter is " + perimeter);
+ 
+    }
+        else
+            System.out.print("The three sides of the input do not form a triangle");
+    }
+}
