@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class MinutesDsyYear {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of minutes: " );
+        int minute = input.nextInt();
+        int yearRate = 60 * 24 * 365;
+        int dayRate = 60 * 24;
+        int year = minute / yearRate;
+        int day = (minute % yearRate)/dayRate;
+        System.out.print(minute + " minutes is approximately " + year + " years and " + day + " days");
+    }
+    
+}
