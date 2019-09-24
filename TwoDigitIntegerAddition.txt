@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class TwoDigitIntegerAddition {
+    public static void main(String[] args) {
+        int number1 = (int)(System.currentTimeMillis()%100);
+        int number2 = (int)(System.currentTimeMillis()/7%100);
+        int answer = number1 + number2;
+        Scanner input = new Scanner(System.in);
+        System.out.print("What is "+ number1 + " + " + number2 + " ? ");
+        int answersEntered = input.nextInt();
+        if (answersEntered == answer)
+            System.out.println(number1 + " + " + number2 + " = " + answersEntered + " is true" );
+        else
+            System.out.println("The correct answer is " + number1 + " + " + number2 + " = " + answer);
+    }
+    
+}

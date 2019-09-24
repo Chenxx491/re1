@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class JudgePalindromeNumber {
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter a three-digit number: ");
+        int number = input.nextInt();
+        int bits = number % 10;
+        int hundreds = number / 100;
+        if (bits == hundreds)
+            System.out.println(number + " is a palindrome !");
+        else
+            System.out.println(number + " is not palindrome !");
+    }
+}
