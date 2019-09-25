@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+public class RandomUppercaseLetter {
+
+    public static void main(String[] args) {
+        char letter = (char)(Math.random()*26 + 'A');
+        System.out.println("" + letter);
+     }
+    
+}
