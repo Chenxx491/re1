@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class AssignGrades {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("请输入学生总人数： ");
+        int headcount = input.nextInt();
+        double [] scores = new double [headcount];
+        System.out.print("请输入学生成绩： ");
+        for (int i = 0;i < scores.length;i++)
+            scores[i] = input.nextDouble();
+        double max = scores[0];
+        for (int i = 1;i < scores.length;i++){
+            if (max < scores[i]){
+                max = scores[i];
+            }
+        }
+        for (int i = 0;i < scores.length;i++){
+            char grade;
+            if (scores[i] >= max - 10)
+                grade = 'A';
+            else if (scores[i] >= max - 20)
+                grade = 'B';
+            else if (scores[i] >= max - 30)
+                grade = 'C';
+            else if (scores[i] >= max - 40)
+                grade = 'D';
+            else
+                grade = 'F';
+            System.out.println("第" + i + "个学生的成绩是 " + scores[i] + "等级为 " + grade);
+        }
+    }
+}
