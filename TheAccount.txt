@@ -1,0 +1,61 @@
+import java.util.Date;
+
+public class TheAccount {
+    private int id = 0;
+    private double balance = 0;
+    private static double annualInteresRate = 0;
+    private Date date;
+    TheAccount(){
+        date = new Date();
+    }
+    TheAccount(int id,double balance){
+        this.id = id;
+        this.balance = balance;
+        date = new Date();
+    }
+    public int getID(){  // 访问 ID
+        return id;
+    }
+    public void setID(int id){  // 修改 ID
+        this.id = id;
+    }
+    public double getBalance(){  // 访问 balance
+        return balance;
+    }
+    public void setBalance(double balance){  // 修改 balance
+        this.balance = balance;
+    }
+    public static double getAnnualInteresRate(){  // 访问 年利率
+        return annualInteresRate;
+    }
+    public static void setAnnualInteresRate(double newAnnualInteresRate){  // 修改 年利率
+        annualInteresRate = newAnnualInteresRate;
+    }
+    public Date getDate(){  // 访问 date
+        return date;
+    }
+    public double getMonthlyInterestRate(){
+        return getAnnualInteresRate() / 12;
+    }
+    public double getMonthlyInterest(){
+        return getBalance() * getMonthlyInterestRate();
+    }
+    public void withdraw(double money){
+        if(money <= balance)
+            setBalance(balance - money);
+        else
+            System.out.println("余额不足！");
+    }
+    public void desposit(double money){
+        setBalance(balance + money);
+    }
+    
+    public static void main(String[] args) {
+        TheAccount account = new TheAccount(1122,20000);
+        TheAccount.setAnnualInteresRate(4.5 / 100);
+        account.withdraw(2500);
+        account.desposit(3000);
+        System.out.println("余额：" + account.getBalance() + " 月利息：" + account.getMonthlyInterest() + " 创建日期：" + account.getDate());
+    }
+    
+}
