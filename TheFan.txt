@@ -1,0 +1,62 @@
+public class TheFan {
+    public final static int SLOW = 1;
+    public final static int MEDIUM = 2;
+    public final static int FAST = 3;
+    
+    private int speed = SLOW;
+    private boolean on = false;
+    private double radius = 5;
+    private String color = "blue";
+    
+    TheFan(){
+        
+    }
+    
+    public int getSpeed(){  // Speed 访问器
+        return speed;
+    }
+    public void setSpeed(int speed){   // Speed 修改器
+        if(getON() && speed >= SLOW && speed <= FAST)
+            this.speed = speed;
+    }
+    public boolean getON(){   // ON 访问器
+        return on;
+    }
+    public void setON(){  // ON 修改器
+        on = !on;
+    }
+    public double getRadius(){  // Radius 访问器
+        return radius;
+    }
+    public void setRadius(double radius){  // Radius 修改器
+        if(radius > 0)
+            this.radius = radius;
+    }
+    public String getColor(){  // Color 访问器
+        return color;
+    }
+    public void setColor(String color){  // Color 修改器
+        this.color = color;
+    }
+    public String toString(){
+        if(getON())
+            return "速度：" + getSpeed() + " 颜色：" + getColor() + " 半径：" + getRadius();
+        else
+            return "Fan is off，颜色：" + getColor() + " 半径：" + getRadius();
+    }
+    public static void main(String[] args) {
+        TheFan fan1 = new TheFan();
+        TheFan fan2 = new TheFan();
+        
+        fan1.setON();
+        fan1.setSpeed(FAST);
+        fan1.setRadius(10);
+        fan1.setColor("yellow");
+        
+        fan2.setSpeed(TheFan.MEDIUM);
+        
+        System.out.println("Fan 1: " + fan1.toString());
+        System.out.println("Fan 2: " + fan2.toString());
+    }
+    
+}
