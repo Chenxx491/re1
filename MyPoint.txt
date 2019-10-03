@@ -1,0 +1,29 @@
+public class MyPoint {
+    private double x = 0.0;
+    private double y = 0.0;
+    MyPoint(){
+        
+    }
+    MyPoint(double x,double y){
+        this.x = x;
+        this.y = y;
+    }
+    public double getX(){
+        return x;
+    }
+    public double getY(){
+        return y;
+    }
+    public double distance(MyPoint P){
+        return Math.sqrt((x - P.getX()) * (x - P.x) + (y - P.y) * (y - P.y));
+    }
+    public double distance(double x,double y){
+        return Math.sqrt((this.x - x) * (this.x - x) + (this.y - y) * (this.y - y));
+    }
+    public static void main(String[] args) {
+        MyPoint point1 = new MyPoint();
+        MyPoint point2 = new MyPoint(10.0,30.5);
+        System.out.println("两点间的距离：" + point1.distance(point2));
+    }
+    
+}
