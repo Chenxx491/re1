@@ -1,0 +1,93 @@
+import java.util.Date;
+import java.util.Scanner;
+
+class GeometricObject{
+    private String color = "white";  //颜色
+    private boolean filled = false;  // 是否用颜色填充
+private Date dateCreated;  // 创建日期
+
+    public GeometricObject(){
+        dateCreated = new Date();
+    }
+    GeometricObject(String color,boolean filled){  // 创建指定颜色和填充值
+        dateCreated = new Date();
+        this.color = color;
+        this.filled = filled;
+}
+
+    public String getColor(){   //访问 颜色
+        return color;
+    }
+    public void setColor(String color){   // 修改 颜色
+        this.color = color;
+    }
+    public boolean isFilled(){  // 访问 填充值
+        return filled;
+    }
+    public void setFilled(boolean filled){  // 修改 填充值
+        this.filled = filled;
+    }
+    public Date getDateCreated(){  // 访问 创建日期
+        return dateCreated;
+    }
+    @Override
+    public String toString(){
+        return     "创建日期：" + dateCreated + " 颜色： " + color + " 是否填充： " + filled;
+    }
+}
+
+
+public class TheTriangleClass extends GeometricObject{
+    private double side1 = 1.0;
+    private double side2 = 1.0;
+private double side3 = 1.0;
+
+    TheTriangleClass(){
+        
+    }
+    TheTriangleClass(String color,boolean filled,double side1,double side2,double side3){  // 创建三角形
+        super(color,filled);
+        if (((side1 + side2) >= side3) && ((side1 + side3) >= side2) && ((side2 + side3) >= side1)){
+            this.side1 = side1;
+            this.side2 = side2;
+            this.side3 = side3;
+        }
+        else
+            System.out.println("创建三角形失败！");
+        
+    }
+    public double getSide1(){
+        return side1;
+    }
+    public double getSide2(){
+        return side2;
+    }
+    public double getSide3(){
+        return side3;
+    }
+    public double getArea(){  // 返回 面积
+        double area;
+        area = Math.sqrt(getPerimeter() * (getPerimeter() - side1) * (getPerimeter() - side2) * (getPerimeter() - side3));
+        return area;
+    }
+    public double getPerimeter(){  // 返回 周长
+        double p;
+        p = side1 + side2 + side3;
+        return p;
+    }
+    public String toString(){
+        return super.toString() + "Triangle: side1 = " + side1 + " side2 = " + side2 + " side3 = " + side3;
+    }
+    public static void main(String[] args) {
+        System.out.println("请输入三角形三边，颜色和是否填充(true或false)");
+        Scanner input = new Scanner(System.in);
+        double side1 = input.nextDouble();
+        double side2 = input.nextDouble();
+        double side3 = input.nextDouble();
+        String color = input.next();
+        boolean filled = input.nextBoolean();
+        TheTriangleClass triangle = new TheTriangleClass(color,filled,side1,side2,side3);;
+        System.out.println("该三角形面积：" + triangle.getArea() + " 各边长：" + triangle.toString() + " 颜色：" + triangle.getColor() + " 是否填充：" + triangle.isFilled());
+    }
+    
+}
