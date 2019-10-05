@@ -1,0 +1,92 @@
+import java.util.Date;
+class Person{
+    private String name;  // 姓名
+    private String address;  // 地址
+    private String num;   // 电话号码
+private String email;  // 电子邮件地址
+
+    Person(String name,String address,String num,String emall){
+        this.name = name;
+        this.address = address;
+        this.num = num;
+        this.email = emall;
+    }
+    @Override
+    public String toString(){
+        return "姓名：" + name + " 地址：" + address + " 电话号码：" + num + " 邮件地址：" + email;
+    }
+}
+
+class Student extends Person{
+    static final String Grade1 = "大一";
+    static final String Grade2 = "大二";
+    static final String Grade3 = "大三";
+    static final String Grade4 = "大四";
+private String grade;
+
+    Student(String name,String address,String num,String email,String grade){
+        super(name,address,num,email);
+        this.grade = grade;
+    }
+    public String toString(){
+        return super.toString() + " 年级：" + grade;
+    }
+}
+
+    class Employee extends Person{
+        private String office;  // 办公室
+        private double salary;  // 工资
+        private Date offeredDate;  // 受聘日期
+
+        Employee(String name,String address,String num,String email,String office,double salary){
+            super(name,address,num,email);
+            this.office = office;
+            this.salary = salary;
+            offeredDate = new Date();
+        }
+        public String toString(){
+            return super.toString() + " 办公室：" + office + " 工资：" + salary + " 受聘日期：" + offeredDate;
+        }
+}
+
+class Faculty extends Employee{
+    private int officeHours;  // 工作时长
+private String rank;  // 级别
+
+    Faculty(String name,String address,String num,String email,String office,double salary,int officeHours,String rank){
+        super(name,address,num,email,office,salary);
+        this.officeHours = officeHours;
+        this.rank = rank;
+    }
+    public String toString(){
+        return super.toString() + " 工作时长：" + officeHours + " 级别：" + rank;
+    }
+}
+
+class Staff extends Employee{
+private String title;  // 职称
+
+    Staff(String name,String address,String num,String email,String office,double salary,String title){
+        super(name,address,num,email,office,salary);
+        this.title = title;
+    }
+    public String toString(){
+        return super.toString() + " 职称：" + title;
+    }
+}
+
+public class AllClass {
+    public static void main(String[] args) {
+        Person person = new Person("HU","上海","123456","@789");
+        Student student = new Student("HU","上海","123456","@789","大四");
+        Employee employee = new Employee("HU","上海","123456","@789","D112",5000.0);
+        Faculty faculty = new Faculty("HU","上海","123456","@789","D112",5000.0,8,"W");
+        Staff staff = new Staff("HU","上海","123456","@789","D112",5000.0,"Q");
+        System.out.println("Person：" + person.toString());
+        System.out.println("Student：" + student.toString());
+        System.out.println( "Employee："+ employee.toString());
+        System.out.println("Faculty：" + faculty.toString());
+        System.out.println("Staff：" + staff.toString());
+    }
+    
+}
