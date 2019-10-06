@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class InputMismatchException {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean continueinput = true;
+        int number1 = 0;
+        int number2 = 0;
+        System.out.println("请输入两个整数：");
+        do {
+            try {
+                number1 = input.nextInt();
+                number2 = input.nextInt();
+                System.out.printf("两数之和为：%d",number1+number2);
+                continueinput = false;
+            }
+            catch (Exception ex1){
+                System.out.println("输入错误，请重新输入：");
+                input.nextLine();
+            }
+        } while(continueinput);
+        
+    }
+    
+}
