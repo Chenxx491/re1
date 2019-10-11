@@ -1,0 +1,108 @@
+import java.util.Scanner;
+
+public class LexicalAnalysis {
+    private String keyWords[] = {"while", "if", "else", "switch", "case", "int", "double", "long", "float", "char", "return"};
+
+    LexicalAnalysis() {
+
+    }
+
+    boolean isKeyWord(String str) {      // 判断关键字
+        for (int i = 0; i < keyWords.length; i++) {
+            if (keyWords[i].equals(str))
+                return true;
+        }
+        return false;
+    }
+
+    boolean isAlphabet(char letter) {      // 判断字母
+        if (((letter >= 'a') && (letter <= 'z') || (letter >= 'A') && (letter <= 'Z')))
+            return true;
+        else
+            return false;
+    }
+
+    boolean isConstant(char num) {  // 判断常数
+        if ((num >= '0') && (num <= '9'))
+            return true;
+        else
+            return false;
+    }
+
+    void analys(String str) {
+        String[] str1 = str.split(" ");
+        for (int i = 0; i < str1.length; i++) {
+            if (isKeyWord(str1[i])) {
+                System.out.println("{ " + str1[i] + " , null}");
+                str1[i] = null;
+            } else if (str1[i] != null) {
+                String strs = str1[i];
+                char[] ch = strs.toCharArray();
+                for (int j = 0; j < ch.length; j++) {
+                    if (isAlphabet(ch[j]))                     //字母
+                        System.out.println("{ 14 , null }");
+                    else if (isConstant(ch[j]))                 //数字
+                        System.out.println("{ 7 , null }");
+                    else {
+                        switch (ch[j]) {
+                            case '+':
+                                System.out.println("{ 8 , null }");
+                                break;
+                            case '-':
+                                System.out.println("{ 9 , null }");
+                                break;
+                            case '*':
+                                System.out.println("{ 10 , null }");
+                                break;
+                            case ';':
+                                System.out.println("{ 13 , null }");
+                                break;
+                            case '(':
+                                System.out.println("{ 15 , null }");
+                                break;
+                            case ')':
+                                System.out.println("{ 15 , null }");
+                                break;
+                            case '=': {
+                                if (ch[++j] == '=')
+                                    System.out.println("{ 12 , null }");
+                                else {
+                                    System.out.println("{ 11 , null }");
+                                    j--;
+                                }
+                            }
+                            break;
+                            case '<': {
+                                if (ch[++j] == '=')
+                                    System.out.println("{ 11 , null }");
+                                else {
+                                    System.out.println("{ 11 , null }");
+                                    j--;
+                                }
+                            }
+                            break;
+                            case '>': {
+                                if (ch[++j] == '=')
+                                    System.out.println("{ 11 , null }");
+                                else {
+                                    System.out.println("{ 11 , null }");
+                                    j--;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        LexicalAnalysis cifa = new LexicalAnalysis();
+        System.out.println("请输入：");
+        Scanner input = new Scanner(System.in);
+        String str1 = input.nextLine();                //读入字符串
+        cifa.analys(str1);
+
+    }
+}
