@@ -1,0 +1,35 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class FindRepititionNumber {
+    public static void main(String[] args) {
+        System.out.print("请输入数组长度：");
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int[] num = new int[n];
+        int[] reNum = new int[n];
+        System.out.println("请输入要存放到数组中的整数：");
+        for(int i=0;i<num.length;i++){               // 循环输入数组数据
+            num[i]=input.nextInt();
+            if((num[i]<0)||(num[i]>(n-1))){
+                System.out.println("输入的数据小于0或大于n-1，请重新输入：");
+                for(int j=0;j<num.length;j++) {
+                    num[j] = input.nextInt();
+                }
+            }
+        }
+        Arrays.sort(num);
+        for(int i=0;i<num.length-1;i++){                    // 遍历数组，查找重复数字
+            if(num[i]==num[i+1]){
+                reNum[num[i]]++;
+            }
+        }
+        int count=0;
+        for(int i=0;i<reNum.length;i++){
+            if(reNum[i]>=1){
+                System.out.println("重复的数字有：" + i + "，重复次数有：" + reNum[i]);
+                count++;
+            }
+        }
+        System.out.println("总共有" + count + "个数字重复");
+    }
+}
