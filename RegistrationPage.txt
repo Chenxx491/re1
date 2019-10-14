@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册页面</title>
+</head>
+<body>
+<form action="#" method="post">
+  <table align="center">
+    <tr>
+    <td>
+      <label for="username">用户名：</label>
+    </td>
+    <td>
+      <input type="text" id="username" placeholder="请输入用户名" name="username">
+    </td>
+  </tr>
+
+    <tr>
+      <td>
+        <label for="password">密码：</label>
+      </td>
+      <td>
+        <input type="password" id="password" placeholder="请输入密码" name="password">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="Email">Email：</label>
+      </td>
+      <td>
+        <input type="email" id="Email" placeholder="请输入Email" name="Email">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        性别
+      </td>
+      <td>
+        <input type="radio" name="sex" value="male"> 男
+        <input type="radio" name="sex" value="female"> 女
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        出生年月
+      </td>
+      <td>
+        年 <select>
+        <option>---请选择---</option>
+        <option>1990年</option>
+        <option>1991年</option>
+        <option>1992年</option>
+        <option>1993年</option>
+        <option>1994年</option>
+        <option>1995年</option>
+        <option>1996年</option>
+        <option>1997年</option>
+        <option>1998年</option>
+        <option>1999年</option>
+        <option>2000年</option>
+      </select>
+        月 <select>
+        <option>---请选择---</option>
+        <option>01</option>
+        <option>02</option>
+        <option>03</option>
+        <option>04</option>
+        <option>05</option>
+        <option>06</option>
+        <option>07</option>
+        <option>08</option>
+        <option>09</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" value="注册">
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
