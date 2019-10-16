@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册页面</title>
+  <style>
+    body{
+      background: url("素材/bg-5.jpg")no-repeat center;
+      background-size: cover;
+    }
+    .one{
+      border-style: solid;
+      border-color: white;
+      background: url("素材/bg-2.jpg") no-repeat;
+      background-size: 400px 600px;
+      width: 400px;
+      height: 600px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    table{
+      margin-top: 50px;
+    }
+    .td-left{
+      text-align: right;
+      height: 50px;
+      color: black;
+    }
+    #username{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+    #password{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+    #Email{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+    #birth{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      box-sizing: border-box;
+      border-radius: 30px;
+      padding-left: 50px;
+    }
+    #sub{
+      background-color: gray;
+      color: white;
+      width: 80px;
+      height: 30px;
+      border: white 1px solid;
+    }
+  </style>
+
+
+</head>
+<body>
+<div class="one">
+<form action="#" method="post">
+  <table align="center">
+    <tr>
+    <td class="td-left">
+      <label for="username">用户名：</label>
+    </td>
+    <td class="td-right">
+      <input type="text" id="username" placeholder="请输入用户名" name="username">
+    </td>
+  </tr>
+
+    <tr>
+      <td class="td-left">
+        <label for="password">密码：</label>
+      </td>
+      <td class="td-right">
+        <input type="password" id="password" placeholder="请输入密码" name="password">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="td-left">
+        <label for="Email">Email：</label>
+      </td>
+      <td class="td-right">
+        <input type="email" id="Email" placeholder="请输入Email" name="Email">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="td-left">
+        性别:
+      </td>
+      <td class="td-right">
+        <input type="radio" name="sex" value="male"> 男
+        <input type="radio" name="sex" value="female"> 女
+      </td>
+    </tr>
+
+    <tr>
+      <td class="td-left">
+        <label for="birth">出生年月:</label>
+      <td class="td-right">
+      <input type="date" id="birth" name="birth">
+    </td>
+      </td>
+    </tr>
+
+      <tr>
+      <td colspan="2" align="center">
+        <input type="submit" value="注册" id="sub">
+      </td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>
