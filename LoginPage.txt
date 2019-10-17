@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+  <style>
+    body{
+      background: url("素材/泰国02.jpg")no-repeat center;
+      background-size: cover;
+    }
+    .one{
+      border-style: solid;
+      border-color: gainsboro;
+      background-size: 400px 200px;
+      width: 400px;
+      height: 200px;
+      margin: auto;
+      margin-top:200px;
+    }
+    table{
+      margin-top: 50px;
+    }
+    .td-left{
+      text-align: right;
+      height: 50px;
+      color: black;
+    }
+    #username{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+    #password{
+      width: 200px;
+      height: 25px;
+      border: 1px #888888 solid;
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+    </style>
+
+
+
+</head>
+<body>
+<div class="one">
+  <form action="#" method="post">
+    <table align="center">
+      <tr>
+        <td class="td-left">
+          <label for="username">用户名：</label>
+        </td>
+        <td class="td-right">
+          <input type="text" id="username" placeholder="请输入用户名" name="username">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="password">密码：</label>
+        </td>
+        <td class="td-right">
+          <input type="password" id="password" placeholder="请输入密码" name="password">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
