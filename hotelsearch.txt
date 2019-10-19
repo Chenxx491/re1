@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>酒店</title>
+  <style>
+    .search{
+      border-style: solid;
+      border-color: gainsboro;
+      background-size: 400px 600px;
+      width: 400px;
+      height: 500px;
+      margin-top: 50px;
+    }
+    table{
+      margin-top: 30px;
+    }
+    .td-left {
+      text-align: right;
+      height: 50px;
+      color: black;
+    }
+
+    #destination {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #checkin {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #checkout {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #lodger {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+    #keyword{
+      width: 150px;
+      height: 30px;
+      border: 1px #888888 solid;
+      padding-left: 5px;
+      border-radius: 10px;
+    }
+    #ser{
+      width: 60px;
+      height: 30px;
+      background: orchid;
+      color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-top: 30px;
+      cursor: pointer; /*鼠标变成小手*/
+    }
+  </style>
+</head>
+
+<body>
+<!--搜索框 -->
+<div class="search">
+  <form action="#" method="post">
+    <table align="center">
+      <tr>
+        <td class="td-left">
+          <label for="destination">目的地：</label>
+        </td>
+        <td class="td-right">
+          <input type="text" id="destination" placeholder="请输入目的地" name="destination">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="checkin">入住日期：</label>
+        </td>
+        <td class="td-right">
+          <input type="date" id="checkin" name="checkin">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="checkout">退房日期：</label>
+        </td>
+        <td class="td-right">
+          <input type="date" id="checkout" name="checkout">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label>房间数：</label>
+        </td>
+        <td id="room">
+          <select style="width: 140px;height: 30px;border-radius: 10px;padding-left:50px">
+            <option>1间</option>
+            <option>2间</option>
+            <option>3间</option>
+            <option>4间</option>
+            <option>5间</option>
+            <option>6间</option>
+            <option>7间</option>
+            <option>8间</option>
+            <option>9间</option>
+            <option>10间</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="lodger">住客数：</label>
+        </td>
+        <td class="td-right">
+          <input type="number" id="lodger" name="lodger">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label>酒店级别：</label>
+        </td>
+        <td id="level">
+          <select style="width: 140px;height: 30px;border-radius: 10px">
+            <option>不限</option>
+            <option>五星级/豪华</option>
+            <option>四星级/高档</option>
+            <option>三星级/舒适</option>
+            <option>二星级及以下/经济</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="keyword">关键词：</label>
+        </td>
+        <td class="td-right">
+          <input type="text" id="keyword" name="keyword" placeholder="(选填)酒店名/地标/商圈">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="搜索" id="ser">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
