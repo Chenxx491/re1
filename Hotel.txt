@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>酒店</title>
+  <style>
+    /*菜单*/
+    .menu {
+      border: 1px solid black;
+      margin-top: 20px;
+      background-color: lightseagreen;
+    }
+    .table-menu{
+      height: 20px;
+      border-spacing: 30px;
+      border-collapse: separate;
+      box-sizing: border-box;
+    }
+
+    #m-one {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-two {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-four {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-five {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-six {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-eight {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-nine {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+/*搜索框*/
+    .search{
+      border-style: solid;
+      border-color: gainsboro;
+      background-size: 300px 500px;
+      width: 300px;
+      height: 500px;
+      margin-top: 50px;
+      background-color: lightseagreen;
+      float: left;
+    }
+    .t-ser{
+      margin-top: 30px;
+      background-color: white;
+      width: 280px;
+    }
+    .td-left {
+      text-align: right;
+      height: 50px;
+      color: black;
+    }
+
+    #destination {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #checkin {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #checkout {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #lodger {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+    #keyword{
+      width: 150px;
+      height: 30px;
+      border: 1px #888888 solid;
+      padding-left: 5px;
+      border-radius: 10px;
+    }
+    #ser{
+      width: 60px;
+      height: 30px;
+      background: rebeccapurple;
+      color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-top: 30px;
+      cursor: pointer; /*鼠标变成小手*/
+    }
+    /*精选主题*/
+    .d-jingxuan{;
+      float:left;
+    }
+    .t-jingxuan{
+      border-spacing: 30px;
+      border-collapse: separate;
+      margin-left: 15px;
+    }
+    #jx-01{
+      background: url("素材/住宿01.jpg");
+      background-size: 250px 400px;
+      width: 250px;
+      height: 400px;
+      border-radius: 20px;
+      border: 3px solid gainsboro;
+      color: white;
+      box-sizing: border-box;
+    }
+    #jx-02{
+      background: url("素材/住宿02.jpg");
+      background-size: 250px 400px;
+      width: 250px;
+      height: 400px;
+      border-radius: 20px;
+      border: 3px solid gainsboro;
+    }
+    #jx-03{
+      background: url("素材/住宿03.jpg");
+      background-size: 250px 400px;
+      width: 250px;
+      height: 400px;
+      border-radius: 20px;
+      border: 3px solid gainsboro;
+    }
+    #jx-04{
+      background: url("素材/住宿04.jpg");
+      background-size: 250px 400px;
+      width: 250px;
+      height: 400px;
+      border-radius: 20px;
+      border: 3px solid gainsboro;
+    }
+
+  </style>
+</head>
+
+<body>
+<!--菜单-->
+<div class="menu">
+  <form action="#" method="post">
+    <table class="table-menu" align="center">
+      <tr>
+        <td id="m-one" align="center"><a href="webpage.html">首页</a></td>
+        <!--旅游-->
+        <td id="m-two" align="center">
+          <a href="Dom-tourism.html">旅游度假</a>
+        </td>
+        <!--酒店-->
+        <td id="m-four" align="center">
+          <a href="Hotel.html">酒店</a>
+        </td>
+        <!--机票-->
+        <td id="m-five" align="center">
+          <a href="AirTicket.html">机票</a>
+        </td>
+        <!--火车票-->
+        <td id="m-six" align="center">
+          <a href="TrainTicket.html">火车票</a>
+        </td>
+        <td id="m-eight" align="center">
+          <a href="LoginPage.html">登录</a>
+        </td>
+        <td id="m-nine" align="center">
+          <a href="RegistrationPage.html">注册</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!--搜索框 -->
+<div class="search">
+  <form action="#" method="post">
+    <table align="center" class="t-ser">
+      <tr>
+        <td class="td-left">
+          <label for="destination">目的地：</label>
+        </td>
+        <td class="td-right">
+          <input type="text" id="destination" placeholder="请输入目的地" name="destination">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="checkin">入住日期：</label>
+        </td>
+        <td class="td-right">
+          <input type="date" id="checkin" name="checkin">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="checkout">退房日期：</label>
+        </td>
+        <td class="td-right">
+          <input type="date" id="checkout" name="checkout">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label>房间数：</label>
+        </td>
+        <td id="room">
+          <select style="width: 140px;height: 30px;border-radius: 10px;padding-left:50px">
+            <option>1间</option>
+            <option>2间</option>
+            <option>3间</option>
+            <option>4间</option>
+            <option>5间</option>
+            <option>6间</option>
+            <option>7间</option>
+            <option>8间</option>
+            <option>9间</option>
+            <option>10间</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="lodger">住客数：</label>
+        </td>
+        <td class="td-right">
+          <input type="number" id="lodger" name="lodger">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label>酒店级别：</label>
+        </td>
+        <td id="level">
+          <select style="width: 140px;height: 30px;border-radius: 10px">
+            <option>不限</option>
+            <option>五星级/豪华</option>
+            <option>四星级/高档</option>
+            <option>三星级/舒适</option>
+            <option>二星级及以下/经济</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-left">
+          <label for="keyword">关键词：</label>
+        </td>
+        <td class="td-right">
+          <input type="text" id="keyword" name="keyword" placeholder="(选填)酒店名/地标/商圈">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="搜索" id="ser">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!--精选主题 -->
+<div class="d-jingxuan">
+  <h2 align="center" style="margin-top: 15px;font-family: 微软雅黑;font-weight: 900;">精选主题</h2>
+<table class="t-jingxuan">
+  <tr>
+    <td id="jx-01" align="top">
+      <h3 style="color: white;margin-bottom: 350px;margin-left: 5px">网红民宿</h3>
+    </td>
+    <td id="jx-02">
+      <h3 style="color: white;margin-bottom: 350px;margin-left: 5px">亲子酒店</h3>
+    </td>
+    <td id="jx-03">
+      <h3 style="color: white;margin-bottom: 350px;margin-left: 5px">花样青旅</h3>
+    </td>
+    <td id="jx-04">
+      <h3 style="color: white;margin-bottom: 350px;margin-left: 5px">古镇酒店</h3>
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
