@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>火车票</title>
+  <style>
+    /*菜单*/
+    .menu {
+      border: 1px solid black;
+      margin-top: 20px;
+      background-color: lightseagreen;
+    }
+    .table-menu{
+      height: 20px;
+      border-spacing: 30px;
+      border-collapse: separate;
+      box-sizing: border-box;
+    }
+
+    #m-one {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-two {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-four {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-five {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-six {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-eight {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+
+    #m-nine {
+      border: 3px solid gainsboro;
+      width: 100px;
+      height: 50px;
+    }
+    /*搜索框*/
+    .search{
+      border-style: solid;
+      border-color: gainsboro;
+      margin-top: 70px;
+      background-color: lightseagreen;
+      float: left;
+      width: 350px;
+      height: 300px;
+    }
+    .t-ser{
+      width: 320px;
+      margin-top: 20px;
+      background-color: white;
+    }
+
+    #startDate {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #start {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #returnDate {
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #arrive{
+      width: 120px;
+      height: 25px;
+      border: 1px #888888 solid;
+      padding-left: 15px;
+      border-radius: 10px;
+    }
+
+    #ser{
+      width: 60px;
+      height: 30px;
+      background: deepskyblue;
+      color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-top: 30px;
+      cursor: pointer; /*鼠标变成小手*/
+    }
+  </style>
+</head>
+<body>
+<!--菜单-->
+<div class="menu">
+  <form action="#" method="post">
+    <table class="table-menu" align="center">
+      <tr>
+        <td id="m-one" align="center"><a href="webpage.html">首页</a></td>
+        <!--旅游-->
+        <td id="m-two" align="center">
+          <a href="Dom-tourism.html">旅游度假</a>
+        </td>
+        <!--酒店-->
+        <td id="m-four" align="center">
+          <a href="Hotel.html">酒店</a>
+        </td>
+        <!--机票-->
+        <td id="m-five" align="center">
+          <a href="AirTicket.html">机票</a>
+        </td>
+        <!--火车票-->
+        <td id="m-six" align="center">
+          <a href="TrainTicket.html">火车票</a>
+        </td>
+        <td id="m-eight" align="center">
+          <a href="LoginPage.html">登录</a>
+        </td>
+        <td id="m-nine" align="center">
+          <a href="RegistrationPage.html">注册</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!--搜索框 -->
+<div class="search">
+  <form action="#" method="post">
+    <table align="center" class="t-ser">
+      <tr align="center"style="height: 50px">
+        <td colspan="2">
+          <input type="radio" name="route" value="single"> 单程
+          <input type="radio" name="route" value="return"> 往返
+        </td>
+      </tr>
+
+      <tr align="center">
+        <td >
+          <label for="start">出发城市：</label>
+          <input type="text" id="start" name="start" placeholder="上海">
+        </td>
+        <td>
+          <label for="startDate">出发日期：</label>
+          <input type="date" id="startDate" name="startDate">
+        </td>
+      </tr>
+
+      <tr  align="center"  style="height: 80px">
+        <td>
+          <label for="arrive">到达城市：</label>
+          <input type="text" id="arrive" name="arrive" placeholder="北京">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="搜索" id="ser">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<!--热门火车票 -->
+<div train-ticket>
+  <form>
+    <h2 align="center" id="air-title">热门火车票</h2>
+    <!--第一个表格 -->
+    <div style="float: left;margin-left: 100px;margin-right: 80px;">
+      <table>
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594北京</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 177
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594杭州</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 24
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594广州</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 189
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594青岛</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 518
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594天津</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 143
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="width: 1px;border: 1px solid gainsboro;float: left;height: 200px;margin-top: 40px"></div>
+
+    <!--第二个表格 -->
+    <div style="float: left;margin-left: 100px">
+      <table>
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594武汉</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 148
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594西安</p>
+          </td>
+          <td style="color: orangered;font-size: 30px;">
+            &#165 180
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594温州</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 175
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594郑州</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 128
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+
+        <tr>
+          <td style="color: gray;width: 300px">
+            <p>上海&#8594济南</p>
+          </td>
+          <td style="color: orangered;font-size: 30px">
+            &#165 109
+          </td>
+          <td style="color: gray;font-size: 15px">起</td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+<!--常见问题-->
+<div style="margin-top: 400px">
+  <p align="left" style="margin-bottom: 5px;font-weight: normal;font-size: large">常见问题</p>
+  <td colspan="4"><hr color="lightseagreen" size="4px"/></td>
+  <form>
+    <table align="center" style="margin-left: 100px">
+      <tr>
+        <td width="350px">
+          <h3>身份验证</h3>
+          <p style="width: 200px">2014年新规：从未在网络购票的用户，请先携身份证去火车站专门窗口核验身份证信息，核验通过后才能网上购票。</p>
+        </td>
+        <td width="350px">
+          <h3>取票方式</h3>
+          <p style="width: 200px">若您使用二代居民身份证预订火车票产品可凭预订时所使用的乘车人证件到车站售票窗口、铁路客票代售点或车站自动售票机上办理换票手续。</p>
+        </td>
+        <td width="350px">
+          <h3>如何退票</h3>
+          <p style="width: 200px">预订成功后，如未取票且离产品内显示的火车发车时间大于1小时30分钟，您可在线申请退票。预订成功后，如已取票或离产品内显示的火车发车时间小于1小时30分钟。</p>
+        </td>
+        <td width="350px">
+          <h3>如何改签</h3>
+          <p style="width: 200px">预订成功后，如需办理订单内的车票改签，您须在换取纸质车票后携带预订时所使用的乘车人有效身份证件原件，在列车开车前前往车站改签窗口办续。</p>
+        </td>
+      </tr>
+  </table>
+
+  </form>
+</div>
+</body>
+</html>
