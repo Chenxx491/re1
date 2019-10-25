@@ -1,0 +1,25 @@
+import java.util.Random;
+import java.util.Scanner;
+public class ArrayIndexOutOfBoundsException {
+    public static void main(String[] args) {
+        int[] array = new int[100];
+        Random rd = new Random();
+        boolean contiune = true;
+        Scanner input = new Scanner(System.in);
+        for(int k = 0;k<100;k++){
+            array[k] = rd.nextInt(100);
+        }
+        System.out.println("请输入数组下标：");
+        do{
+            try{
+                int i = input.nextInt();
+                System.out.println("array[" + i + "] = " + array[i]);
+                contiune = false;
+            }
+            catch(IndexOutOfBoundsException ex){
+                System.out.println("Out of Bounds, try again: ");
+                input.nextLine();
+            }
+        }while(contiune);
+    }
+}
