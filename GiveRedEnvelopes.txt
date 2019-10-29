@@ -1,0 +1,112 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class GiveRedEnvelopes {
+    public static void main(String[] args) {
+        GroupOwner own1 = new GroupOwner("1号群主",300);
+        CommenMember member1 = new CommenMember("1号成员",0);
+        CommenMember member2 = new CommenMember("2号成员",0);
+        CommenMember member3 = new CommenMember("3号成员",0);
+        Scanner input = new Scanner(System.in);
+        System.out.print("请输入红包金额：");
+        int totalMoney = input.nextInt();
+        System.out.print(" 请输入红包个数(本群总共四个人)：");
+        int totalNum = input.nextInt();
+        ArrayList<Double> arrayList = own1.wrapRedEnvelope(totalMoney,totalNum);
+        member1.openRedEnvelope(arrayList);
+        member2.openRedEnvelope(arrayList);
+        member3.openRedEnvelope(arrayList);
+        System.out.println("================================================");
+        System.out.println(own1.toString());
+        System.out.println(member1.toString());
+        System.out.println(member2.toString());
+        System.out.println(member3.toString());
+    }
+}
+
+class GroupMember {     // 群成员类
+    private String name;
+    private double balance;
+
+    GroupMember() {
+
+    }
+
+    GroupMember(String name, double balance) {
+        this.name = name;                    // 群昵称
+        this.balance = balance;              // 余额
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return "群昵称：" + getName() + "，余额：" + getBalance();
+    }
+}
+
+class GroupOwner extends GroupMember {          // 群主类
+    GroupOwner() {
+
+    }
+
+    GroupOwner(String name, double balance) {
+        super(name, balance);
+    }
+
+    ArrayList<Double> wrapRedEnvelope(int totalMoney, int totalNum) {         // 发红包
+        ArrayList<Double> arrayRed = new ArrayList<Double>();
+        if (getBalance() < totalMoney) {
+            return null;
+        } else {
+            int ave = ((totalMoney * 100) / totalNum);
+            int last = ((totalMoney * 100) % totalNum);
+            setBalance(getBalance() - totalMoney);
+            for (int i = 0; i < totalNum - 1; i++) {
+                arrayRed.add(ave/100.0);
+            }
+            if(last==0){
+                arrayRed.add(ave/100.0);
+            }
+            else if(last!=0){
+                arrayRed.add((last+ave)/100.0);
+            }
+
+        }
+
+        return arrayRed;
+    }
+}
+
+class CommenMember extends GroupMember {     // 普通成员类
+    CommenMember() {
+
+    }
+
+    CommenMember(String name, double balance) {
+        super(name, balance);
+    }
+
+    void openRedEnvelope(ArrayList<Double> arrayRed) {           // 开红包
+        Random random = new Random();
+        int num = random.nextInt(arrayRed.size());
+        System.out.println("群成员 " + getName() + "抢到了 " + arrayRed.get(num));
+        double money = arrayRed.remove(num);
+        setBalance(money);
+    }
+}
