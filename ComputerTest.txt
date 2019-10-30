@@ -1,0 +1,86 @@
+// USB接口
+interface Usb {
+    void open();
+
+    void close();
+}
+
+// 笔记本类
+class Laptop {
+    private boolean on = false;
+
+    Laptop() {
+
+    }
+
+    void open() {
+        this.on = true;
+        System.out.println("笔记本已打开");
+    }
+
+    void putOff() {
+        this.on = true;
+        System.out.println("笔记本已关闭");
+    }
+
+    void useUSB(Usb usb) {
+        if (on && usb != null) {
+            if (usb instanceof Mouse) {
+                ((Mouse) usb).click();
+            }
+            else if(usb instanceof Keyboard){
+                ((Keyboard)usb).knovkOn();
+            }
+        }
+    }
+}
+
+class Mouse implements Usb {           // 鼠标类
+    Mouse() {
+    }
+
+    public void open() {
+        System.out.println("鼠标已打开");
+    }
+
+    public void close() {
+        System.out.println("鼠标已关闭");
+    }
+
+    public void click() {
+        System.out.println("鼠标点击！");
+    }
+}
+
+class Keyboard implements Usb{             // 键盘类
+    Keyboard() {
+    }
+
+    public void open() {
+        System.out.println("键盘已打开");
+    }
+
+    public void close() {
+        System.out.println("键盘已关闭");
+    }
+    public void knovkOn(){
+        System.out.println("键盘敲击！");
+    }
+
+}
+
+public class ComputerTest {
+    public static void main(String[] args) {
+        Laptop computer1 = new Laptop();
+        Mouse mouse1 = new Mouse();
+        Keyboard keyboard1 = new Keyboard();
+        computer1.open();
+        mouse1.open();
+        computer1.useUSB(mouse1);
+        mouse1.close();
+        keyboard1.open();
+        computer1.useUSB(keyboard1);
+        keyboard1.close();
+        computer1.putOff();
+    }
+}
