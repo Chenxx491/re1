@@ -1,0 +1,23 @@
+/*
+ 题目：请使用Math相关的API，计算在-10.8到5.9之间，绝对值大于6或者小于2.1的整数有多少个？
+ 解题思路：
+     1. 需要用到Math类中的abs(double num)取绝对值方法
+     2. 使用强制类型转换将double转为int从而得到整数
+     3. 设置一个计数器计算整数的个数
+     4. for循环得到每个数的绝对值用强制转换赋值给num，再通过if筛选出符合要求的数，如果符合则count++;
+        需注意 i 的初值应是Math(-10.8)，即将-10.8向上取整；如果直接让i=-10.8会出现两个0。
+ */
+
+import java.lang.Math;
+public class MathTest {
+    public static void main(String[] args) {
+        int count = 0;
+        for(double i=Math.ceil(-10.8);i<=5.9;i++){     // 需注意 i 的初值应是Math(-10.8)，即将-10.8向上取整；如果直接让i=-10.8会出现两个0。
+            int num = (int)Math.abs(i);
+            if((num>6)||(num<2.1)){
+                count++;
+            }
+        }
+        System.out.println("绝对值大于6或者小于2.1的整数有 " + count + " 个");
+    }
+}
