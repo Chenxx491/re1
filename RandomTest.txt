@@ -1,0 +1,23 @@
+
+/*
+题目：生成1-33之间的随机数，添加到集合并遍历。
+解题思路：
+   1. 需要生成随机数，用到Random类
+   2. 创建一个集合用for循环将随机数添进去
+   3. 用for each循环进行对集合进行遍历
+*/
+
+import java.util.ArrayList;
+import java.util.Random;
+public class RandomTest {
+    public static void main(String[] args) {
+        Random r = new Random();
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 0;i<30;i++){
+            list.add(r.nextInt(33)+1);
+        }
+        for(Integer j : list){
+            System.out.print(j + " ");
+        }
+    }
+}
