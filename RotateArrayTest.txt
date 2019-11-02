@@ -1,0 +1,58 @@
+/*
+题目：把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+     输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。
+例如：数组{3,4,5,1,2}为数组{1,2,3,4,5}的一个旋转，该数组最小值为1。
+
+解题思路：
+    1. 观察发现其实旋转后的数组可以分为两个递增的子数组，如此便可用二分查找法找出最小的元素。
+    2. 设置两个指针high和low，分别指向第一个元素和最后一个元素，再用一个指针mid指向数组中间的元素
+    3. 如果mid>=high，则代表最小元素在mid后边的子数组之中(因为原数组是递增的，将前k个元素从旋转到后边以后，后边的k个元素一定小于或等于前边的元素)
+    4. 然后将high指针移到mid指针所指位置，此时还需要查找的数组变为之前mid后的子数组。
+    5. 再将该子数组从中间分为两个子数组，比较新的high和mid，若array[mid]>=array[high]重复步骤4。
+    6. 如此下去直到mid和high指向同一个元素，该元素即最小的元素。
+    7. 如果是array[mid]<=array[high]，则mid所指的即最小元素。
+    8. 有一种特殊情况是，该数组旋转了0个元素，这时最小元素就等于第一个元素
+    9. 另一种特殊情况是:{1,0,1,1,1}和{1,1,1,0,1}都可看成递增数组{0,1,1,1,1}的旋转数组，第high，第mid,第low号元素都等于1
+       这时，二分查找法就不再使用，而应该使用顺序查找。
+*/
+
+
+import java.util.Scanner;
+
+public class RotateArrayTest {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[] array = new int[100];
+        System.out.print("请输入数组长度：");
+        int n=input.nextInt();
+        System.out.print("请输入数组元素：");
+        for (int i=0;i<n;i++){
+            array[i]=input.nextInt();
+        }
+        int temp;
+        int high=0,low=n-1,mid=n/2;     // 设置high,mid,low指针
+        if(array[0]<array[n-1]) {          // 如果旋转数组等于原数组，最小元素就是第一个元素
+            System.out.println("最小的元素为：" + array[0]);
+        }
+        else if(array[high]==array[mid] && array[high]==array[low] && array[mid]==array[low]){   // 如果high=low=mid，用顺序查找
+            int min=array[0];
+            for(int i=1;i<array.length;i++){
+                if(min>=array[i]){
+                    min=array[i];
+                }
+            }
+            System.out.print("最小元素为：" + min);
+        }
+        else if (array[mid]>=array[high]){              // 如果为一般旋转数组且第mid号元素>=第high号元素，用二分查找
+            while (high!=mid){
+                high = mid;
+                mid = (mid+low)/2;
+            }
+            System.out.print("最小元素是：" + array[mid]);
+        }
+        else {                                          // 如果为一般旋转数组，且第mid号元素<high号元素，最小元素即mid号元素
+            System.out.print("最小元素是：" + array[mid]);
+        }
+    }
+
+}
