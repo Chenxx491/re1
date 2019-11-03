@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+/*
+ 题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递减的顺序排序。
+      请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+
+ 解题思路：
+    1. 需要输入，用到Scanner类，创建一个二维数组array[n][n]后，用for循环将用户输入的元素存进去
+    2. 将用户输入的需要在数组中查找的整数findNum和二维数组右上角的元素array[1][n]进行比较，总共分以下几种情况：
+       1) findNum == array[1][n]，array[1][n]就是要查找的整数
+       2) findNum > array[1][n]，则排除array[1][n]所在行，即第一行(因为该数组每一行从左到右递增)
+       3) 将排除掉第一行的数组中的右上角的元素，即array[2][n]与findNum比较，重复步骤1,2,3
+       4）findNum < array[1][n],则排除掉array[1][n]所在行，即第n行，因为数组是每一列从上到下递增
+       5) 将排除掉第一列的数组的右上角的元素，即array[1][n-1]与findNum比较，重复步骤 1,4,5
+   3. 如果在数组中找到findNum，就返回true，未找到则返回false
+*/
+public class LookInTwodimeArray {
+
+    public static boolean find(int[][] a, int num) {
+        boolean b = false;
+        int i = 0;
+        int j = a[0].length - 1;
+        while (i<a.length && j>=0) {
+            if (num == a[i][j]) {
+                b=true;
+                break;
+            } else if (num < a[i][j]) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return b;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int line, row;
+        System.out.print("请输入数组行数和列数：");
+        line = input.nextInt();
+        row = input.nextInt();
+        int[][] array = new int[100][100];
+        System.out.println("请按照每一行从左到右递增，每一列从上到下递增规则输入数组元素：");
+        for (int i = 0; i < line; i++) {
+            for (int j = 0; j < row; j++) {
+                array[i][j] = input.nextInt();
+            }
+        }
+        int findNum;
+        System.out.print("请输入要在数组中查找的整数：");
+        findNum = input.nextInt();
+        boolean result = find(array,findNum);
+        if (result) {
+            System.out.println(result);
+        } else {
+            System.out.println(result);
+        }
+
+    }
+}
