@@ -1,0 +1,48 @@
+/*题目：请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，
+         当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy.
+解题思路：
+ 1. 首先遍历数组计算出数组中有几个空格
+  2. 根据原数组长度和含有空格个数，计算出新数组长度(一个空格数组长度增加2，故新数组长度 = 原数组长度 + 空格个数 * 2
+  3. 设置两个指针point1,point2，分别指向原数组尾部和新数组尾部
+   4. 从原数组尾部开始复制元素到新数组(也是从尾部开始),当遇到空格时，则在新数组中存入'%','2','0'；然后将point2指针向前移动三格
+   5. 如此循环，知道point1==point2时，该数组的空格被替换完毕
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class ReplaceStringTest {
+    public static void main(String[] args) {
+        System.out.println("请输入字符串：");
+        Scanner input=new Scanner(System.in);
+        String str=input.nextLine();
+        char[] strArray=str.toCharArray();
+        int blankNum = 0;                         // 空格个数
+        for(int i=0;i<strArray.length;i++){       // 遍历数组计算出数组中有几个空格
+            if(strArray[i]==' ') {
+                blankNum++;
+            }
+        }
+        System.out.println("数组中空格个数为："+ blankNum);
+        int oldLen = strArray.length;
+        int newLen = blankNum*2 + strArray.length;                // 新的数组长度
+        strArray = Arrays.copyOf(strArray,newLen);                // 将数组扩容
+        int point1 = oldLen-1;                                    // point1指向原数组尾部
+        int point2 = newLen-1;                                   // point2指向新数组尾部
+        while (point1>=0 && point2>point1){
+            if(strArray[point1]!=' '){
+                strArray[point2--]=strArray[point1];
+                point1--;
+            }else {
+                strArray[point2--]='0';
+                strArray[point2--]='2';
+                strArray[point2--]='%';
+                point1--;
+            }
+        }
+        for (int i = 0; i < strArray.length ; i++) {
+            System.out.print(strArray[i]);
+        }
+    }
+}
