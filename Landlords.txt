@@ -1,0 +1,60 @@
+/*
+按照斗地主的规则，完成洗牌发牌的动作。
+具体规则：
+使用54张牌打乱顺序,三个玩家参与游戏，三人交替摸牌，每人17张牌，最后三张留作底牌。
+解题思路：
+   1. 首先创建一副扑克牌，总共54张：四个花色(黑桃，梅花，方片，红桃)各13张总共52张，大王，小王
+        * 创建一个数组flowerColor存储四种花色，再创建一个数组card存储{ 2，A，K，Q，J，10,9,8,7,6,5,4,3 }
+        * 创建一个ArrayList集合存放组合好的扑克牌
+   2. 接下来是洗牌，使用Random类将flowerColor和card数组随机组合
+   3. 创建一个长度为3的数组surPlusCard存放底牌,创建三个长度为17的数组分别存放玩家1(play01)，玩家2(play02)，玩家3(play03)各自的牌
+   4. 发牌：利用for循环，轮流给每个玩家发牌，每人一张，当i<51时，i%3==0,发给玩家1；i%3==1，发给玩家2；i%3==2,发给玩家3；
+            将剩余三张牌放入surPlusCard数组
+   5. 看牌：最后输出三个玩家和底牌数组
+*/
+
+import java.util.ArrayList;
+import java.util.Collections;
+public class Landlords {
+    public static void main(String[] args) {
+        // 准备扑克牌
+        String[] flowerColor = {"♠", "♣", "♦", "♥"};                                          // 存储花色
+        String[] card = {"2", "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3"};     // 存储牌面大小
+        ArrayList<String> poker = new ArrayList<>();                                           // 存放扑克牌
+        for (int j = 0; j < card.length; j++) {
+            for (int k = 0; k < flowerColor.length; k++) {
+                poker.add(card[j] + flowerColor[k]);
+
+            }
+        }
+        poker.add("大王");
+        poker.add("小王");
+
+        // 洗牌
+        Collections.shuffle(poker);
+
+        // 发牌
+        ArrayList<String> play01 = new ArrayList<>();                                             // 存放玩家1的牌
+        ArrayList<String> play02 = new ArrayList<>();                                            // 存放玩家2的牌
+        ArrayList<String> play03 = new ArrayList<>();                                             // 存放玩家3的牌
+        ArrayList<String> surPlusCard = new ArrayList<>();                                         // 存放底牌
+        for (int i = 0; i < poker.size() - 3; i++) {
+            if (i % 3 == 0) {
+                play01.add(poker.get(i));
+            } else if (i % 3 == 1) {
+                play02.add(poker.get(i));
+            } else if (i % 3 == 2) {
+                play03.add(poker.get(i));
+            }
+        }
+        surPlusCard.add(poker.get(poker.size() - 3));
+        surPlusCard.add(poker.get(poker.size() - 2));
+        surPlusCard.add(poker.get(poker.size() - 1));
+
+        // 看牌
+        System.out.println("玩家01的牌为：" + play01);
+        System.out.println("玩家02的牌为：" + play02);
+        System.out.println("玩家03的牌为：" + play03);
+        System.out.println("底牌为：" + surPlusCard);
+    }
+}
