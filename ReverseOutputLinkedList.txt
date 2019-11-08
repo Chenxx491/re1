@@ -1,0 +1,65 @@
+/*
+栈定义: 栈是一种只能在一端进行插入或删除操作的线性表。（先进后出表），java中的Stack继承Vector
+具体使用：1. 实例化：Stack stack=new Stack();
+         2. 判断是否为空：stack.empty()
+         3. 取栈顶值（不出栈）：stack.peek()
+         4. 进栈：stack.push(Object); stack.add();
+         5. 出栈：stack.pop();
+
+题目：输入一个链表的头结点，从尾到头反过来打印出每个节点的值。
+解题思路：反向输出，即先进后出，于是可以用栈的特性来实现反向输出
+         1. 创建一个节点类ListNode：包含节点序号serialNum，和后继节点next
+         2. 创建节点类ListNode的实例让第二个节点成为第一个节点的后继节点，第三个节点成为第二个节点的后继节点以此类推
+         3. 将节点入栈，然后出栈
+
+*/
+
+
+import java.util.Stack;
+
+// 创建节点类
+class ListNode{
+    private int serialNum;
+    private ListNode next = null;
+    ListNode(int serialNum){
+        this.serialNum = serialNum;
+    }
+
+    public void setNext(ListNode next) {
+        this.next = next;
+    }
+
+    public ListNode getNext() {
+        return next;
+    }
+
+    public int getSerialNum() {
+        return serialNum;
+    }
+}
+
+public class ReverseOutputLinkedList {
+    public static void main(String[] args) {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+
+        // 设置后继节点
+        node1.setNext(node2);
+        node2.setNext(node3);
+        node3.setNext(node4);
+
+        // 创建一个栈，并将节点入栈
+        Stack<Integer> stack = new Stack<>();
+        stack.add(node1.getSerialNum());
+        stack.add(node2.getSerialNum());
+        stack.add(node3.getSerialNum());
+        stack.add(node4.getSerialNum());
+
+        // 将栈内元素出栈，即反向输出节点
+        while (!stack.empty()){
+            System.out.print(stack.pop() + " ");
+        }
+    }
+}
