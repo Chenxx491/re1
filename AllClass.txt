@@ -3,7 +3,7 @@ class Person{
     private String name;  // 姓名
     private String address;  // 地址
     private String num;   // 电话号码
-private String email;  // 电子邮件地址
+    private String email;  // 电子邮件地址
 
     Person(String name,String address,String num,String emall){
         this.name = name;
