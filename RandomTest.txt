@@ -14,7 +14,7 @@ public class RandomTest {
         Random r = new Random();
         ArrayList<Integer> list = new ArrayList<>();
         for(int i = 0;i<30;i++){
-            list.add(r.nextInt(33)+1);
+            list.add(r.nextInt(33)+1);              //  nextInt(33)生成的是[0,3)之间的随机数，将整体+1以后，范围变成[1,3]
         }
         for(Integer j : list){
             System.out.print(j + " ");
