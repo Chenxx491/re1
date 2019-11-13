@@ -1,0 +1,24 @@
+/*
+题目：某汽车组装厂主要产品为4轮沙滩越野车（3座）和6轮山地越野车（5座），这两类车辆的轮胎是通用的，车内安装的座位也是通用的。
+     这些部件每月初由供货商送到仓库，其它所需部件都有足够多的库存。组装厂依据月初仓库中的合格部件数量决定每类车辆的组装数量。
+     现有某月初仓库中的两类物品数量，请计算本月两类汽车的产量。输入说明：两种部件的合格品数量；输出说明：两类汽车的生产数量；
+     输入样例：20  16
+     输出样例：2   2
+
+解题思路：4*fourWheelSuv + 6*sixWheelSuv = tireNum
+         3*fourWheelSuv + 5*sixWheelSuv = seatNum
+         根据以上两个公式就可以知道两类车的数量
+ */
+
+import java.util.Scanner;
+public class AssembleCars {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入轮胎和座位的数量：");
+        int tireNum = scanner.nextInt();
+        int seatNum = scanner.nextInt();
+        int fourWheelSuv = (5*tireNum - 6*seatNum) / 2;
+        int sixWheelSuv = (4*seatNum - 3*tireNum) / 2;
+        System.out.print("四轮沙滩越野车数量：" + fourWheelSuv + " 六轮沙滩越野车数量：" + sixWheelSuv);
+    }
+}
