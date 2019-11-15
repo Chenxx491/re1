@@ -1,0 +1,57 @@
+/*
+题目：统计二维整数数组中，横向或纵向连续3个相邻元素的最大和。输入说明：数组行数x列数 y, 二维整数数组中元素；
+     输出说明：此数组中横向或纵向连续3个相邻元素的最大和。
+     输入样例：4  4
+     3  6  0  8
+     1  0  2  4
+     2  0  1  9
+     0  1  2  3
+     输出样例：21
+
+解题思路：
+    1. 创建一个二维数组twoDim存放输入的数据。
+    2. 遍历该二维数组，将横向连续三个数之和计算出来存放在横向之和数组tranSum中
+       同样的将纵向连续三个相邻元素之和计算出来存放在横向之和数组longSum中
+    3. 对两个存放横向和纵向数组之和的数组从小到大排序，数组最后一个即为横向和纵向最大的和
+    4. 比较横向最大和与纵向最大和，二者谁大输出谁
+ */
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class MaximumSumInTwoDimensional {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入数组的行和列数：");
+        int x = scanner.nextInt();                                // 行数
+        int y = scanner.nextInt();                               // 列数
+        System.out.println("请输入二维整数数组：");
+        int[] tranSum = new int[x];                             // 存放横向连续相邻三个数之和
+        int[][] twoDim = new int[x][y];
+        for (int i = 0; i < twoDim.length; i++) {
+            for (int j = 0; j < twoDim[i].length; j++) {
+                twoDim[i][j] = scanner.nextInt();
+                if (j<3){
+                    tranSum[i] += twoDim[i][j];
+                }
+            }
+        }
+
+        int[] longSum = new int[y];                                  // 存放纵向连续相邻三个数之和
+        for (int i = 0; i < twoDim.length; i++) {
+            for (int j = 0; j < twoDim[i].length; j++) {
+                if (j<3){
+                    longSum[i] += twoDim[j][i];
+                }
+            }
+        }
+        // 对两个存放横向和纵向数组之和的数组从小到大排序，数组最后一个即为横向和纵向最大的和
+        Arrays.sort(tranSum);
+        Arrays.sort(longSum);
+        // 比较横向最大和与纵向最大和，二者谁大输出谁
+        if (tranSum[x-1] >= longSum[y-1]){
+            System.out.print(tranSum[x-1]);
+        }else {
+            System.out.print(longSum[y-1]);
+        }
+    }
+}
