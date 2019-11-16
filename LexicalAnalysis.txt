@@ -22,7 +22,7 @@ public class LexicalAnalysis {
             return false;
     }
 
-    boolean isConstant(char num) {  // 判断常数
+    boolean isConstant(char num) {            // 判断常数
         if ((num >= '0') && (num <= '9'))
             return true;
         else
@@ -39,9 +39,9 @@ public class LexicalAnalysis {
                 String strs = str1[i];
                 char[] ch = strs.toCharArray();
                 for (int j = 0; j < ch.length; j++) {
-                    if (isAlphabet(ch[j]))                     //字母
+                    if (isAlphabet(ch[j]))                                               //字母
                         System.out.println("{ 14 , null }");
-                    else if (isConstant(ch[j]))                 //数字
+                    else if (isConstant(ch[j]))                                     //数字
                         System.out.println("{ 7 , null }");
                     else {
                         switch (ch[j]) {
@@ -101,7 +101,7 @@ public class LexicalAnalysis {
         LexicalAnalysis cifa = new LexicalAnalysis();
         System.out.println("请输入：");
         Scanner input = new Scanner(System.in);
-        String str1 = input.nextLine();                //读入字符串
+        String str1 = input.nextLine();                                         //读入字符串
         cifa.analys(str1);
 
     }
