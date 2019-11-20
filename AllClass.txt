@@ -1,9 +1,9 @@
 import java.util.Date;
 class Person{
-    private String name;  // 姓名
-    private String address;  // 地址
-    private String num;   // 电话号码
-    private String email;  // 电子邮件地址
+    private String name;                               // 姓名
+    private String address;                              // 地址
+    private String num;                               // 电话号码
+    private String email;                              // 电子邮件地址
 
     Person(String name,String address,String num,String emall){
         this.name = name;
@@ -34,8 +34,8 @@ private String grade;
 }
 
     class Employee extends Person{
-        private String office;  // 办公室
-        private double salary;  // 工资
+        private String office;                              // 办公室
+        private double salary;                              // 工资
         private Date offeredDate;  // 受聘日期
 
         Employee(String name,String address,String num,String email,String office,double salary){
@@ -50,8 +50,8 @@ private String grade;
 }
 
 class Faculty extends Employee{
-    private int officeHours;  // 工作时长
-private String rank;  // 级别
+    private int officeHours;                              // 工作时长
+private String rank;                              // 级别
 
     Faculty(String name,String address,String num,String email,String office,double salary,int officeHours,String rank){
         super(name,address,num,email,office,salary);
@@ -64,7 +64,7 @@ private String rank;  // 级别
 }
 
 class Staff extends Employee{
-private String title;  // 职称
+private String title;                              // 职称
 
     Staff(String name,String address,String num,String email,String office,double salary,String title){
         super(name,address,num,email,office,salary);
