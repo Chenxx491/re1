@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class CleanNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入n：");
+        int n = scanner.nextInt();
+        int num;
+        int count=0;
+        for (int i = 1; i <= n; i++) {
+            num = i%10;
+            i=i/10;
+            if (num!=2){
+                count++;
+            }
+        }
+        System.out.print(count);
+    }
+}
