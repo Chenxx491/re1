@@ -14,6 +14,14 @@
          3 > 2，不交换；有序区变成[2,3,5,6]，无序区为空，排序结束。
    算法时间复杂度：
        需要进行N-1趟排序，每趟排序需要和N-i个元素进行比较，所以时间复杂度为：O(N^2)
+
+选择排序：
+   1. 一开始有序区为空，无序区为整个序列，从无序区中找出最小数min1；
+   2. 将第一个数与min交换，此时有序区变为[min1]，无序区为N-1；
+   3. 再从无序区中找到最小的数min2，将无序区第一个数(即整个序列第二个数)和min2交换；此时有序区为[min1,min2]，无序区为N-2
+   4. 重复1,2步骤直到无序区中只剩下最后一个数。
+   算法时间复杂度:
+       需要进行N-1趟排序，每趟排序需要比较N-i个元素，所以算法时间复杂度为：O(N^2)
  */
 
 public class ThreeKindsSort {
@@ -22,16 +30,32 @@ public class ThreeKindsSort {
         for (int i = 1; i < ary.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (ary[j]<ary[j-1]){
-                    exchange(ary,ary[j],ary[j-1]);
+                    exchange(ary,j,j-1);
                 }
             }
         }
     }
 
+// 选择排序
+    public static void selectionSort(int[] ary) {
+        int p1 = 0;
+        while (p1 < ary.length - 1) {
+            int p2 = p1;
+            for (int i = p1 + 1; i < ary.length; i++) {
+                if (ary[p2] > ary[i]) {
+                    p2 = i;
+                }
+            }
+            exchange(ary,p2, p1);
+            p1++;
+        }
+
+    }
+
     // 交换方法
-    public static void exchange(int[] ary,int num1,int num2){
-        int temp = num1;
-        num1 = num2;
-        num2 = temp;
+      public static void exchange(int[] arr,int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
