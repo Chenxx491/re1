@@ -22,22 +22,38 @@
    4. 重复1,2步骤直到无序区中只剩下最后一个数。
    算法时间复杂度:
        需要进行N-1趟排序，每趟排序需要比较N-i个元素，所以算法时间复杂度为：O(N^2)
+
+插入排序：
+   1. 一开始有序区中只有第一个元素，取出无序区第一个元素和无序区的元素从后向前开始比较
+   2. 如果已排序的元素大于无序区的元素，则将已排序的元素向后移
+   3. 如果已排序的元素小于或等于无序区元素，则停止比较。
+   4. 重复上述步骤直到所有元素都已排序
+   算法时间复杂度：
+      1. 最好情况是得到的就是已经排好序的序列，该情况下只需进行N-1次比较情况
+      2. 最差的情况是刚好是倒序，此时算法复杂度为O(N^2)
+      3. 所以插入排序平均算法时间复杂度为：O(N^2)
  */
 
 public class ThreeKindsSort {
-    // 冒泡排序
-    public static void theBubbleSort(int[] ary){
+   // 冒泡排序
+    public static void theBubbleSort(int[] ary) {
+        if (ary == null || ary.length < 2) {
+            return;
+        }
         for (int i = 1; i < ary.length; i++) {
             for (int j = i; j > 0; j--) {
-                if (ary[j]<ary[j-1]){
-                    exchange(ary,j,j-1);
+                if (ary[j] < ary[j - 1]) {
+                    exchange(ary, j, j - 1);
                 }
             }
         }
     }
 
-// 选择排序
+    // 选择排序
     public static void selectionSort(int[] ary) {
+        if (ary == null || ary.length < 2) {
+            return;
+        }
         int p1 = 0;
         while (p1 < ary.length - 1) {
             int p2 = p1;
@@ -46,10 +62,24 @@ public class ThreeKindsSort {
                     p2 = i;
                 }
             }
-            exchange(ary,p2, p1);
+            exchange(ary, p2, p1);
             p1++;
         }
 
+    }
+
+    // 插入排序
+    public static void insertionSort(int[] ary) {
+        if (ary == null || ary.length < 2) {
+            return;
+        }
+        for (int i = 1; i < ary.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (ary[j] > ary[j + 1]) {
+                    exchange(ary, j, j + 1);
+                }
+            }
+        }
     }
 
     // 交换方法
