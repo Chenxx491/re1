@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>矩形</title>
+</head>
+
+<body>
+<canvas id="drawing" width="800" height="800">绘图区域</canvas>
+</body>
+</html>
+<script type="text/javascript">
+  var drawing=document.getElementById("drawing");
+  if (drawing.getContext) {
+    var context=drawing.getContext("2d");
+    context.fillStyle = "red";//填充样式演示
+    context.strokeStyle="black";//轮廓颜色
+    context.strokeRect(150,150,150,150);//绘制矩形轮廓
+    context.fillRect(150, 150, 150, 150);//绘制矩形
+  };
+</script>
