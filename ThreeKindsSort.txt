@@ -33,6 +33,25 @@
       2. 最差的情况是刚好是倒序，此时算法复杂度为O(N^2)
       3. 所以插入排序平均算法时间复杂度为：O(N^2)
 
+快速排序：
+  1. 确定一个基准数base，一般是第一个数
+  2. 分别设置哨兵i，j指向最左和最右
+  3.哨兵j先向左移动，在小于基准数的位置停下
+  4.此时哨兵i开始移动，在大于基准数的位置停下
+  5.然后交换j,i两个位置上的数
+  6.循环步骤3,4,5直到i==j时，将基准数与i,j所指位置交换
+  7.此时整个序列被基准数分成两半，左边小于基准数，右边大于基准数
+  8.再分别对这两个序列重复上述步骤，直到序列被全部处理完毕
+
+经典快排：
+   1. 将最后一个数作为基准数
+   2. 通过荷兰国旗问题将数组变为：左边为小于num区域，中间为等于num区域，右边为大于num区域
+   3. 再将小于区域和大于区域取出来分别再进行上述步骤，即递归
+
+随机快排（经常使用，因为很快）：由于使用经典快排其实存在最坏情况，也就是分得的大于区域和小于区域规模可能不均等，所以改进后使用随机产生一个基准数，与数组的最坏
+         一个数交换，这样便在经典快排的基础上的改进了变成随机快排（其实就是通过随机的办法让原有的样本被打乱，这样就算法复杂度就变成一个概率事件
+         除了用随机的办法外，还可用哈希函数）
+
 对数器：0. 有一个你想要测的方法a，
        1. 实现一个绝对正确但是复杂度不好的方法b，
        2. 实现一个随机样本产生器
@@ -93,6 +112,55 @@ public class ThreeKindsSort {
             }
         }
     }
+
+//  快速排序
+    private  static void quickSort(int[] a, int left, int right) {
+        if (left > right) {
+            return;
+        } else {
+            int base = a[left];
+            int i = left, j = right;
+            while (i != j) {
+                while (a[j] >= base && i < j) {
+                    j--;
+                }
+                while (a[i] <= base && i < j) {
+                    i++;
+                }
+                exchange(a, i, j);
+            }
+            exchange(a, left, i);
+            quickSort(a, left, i - 1);
+            quickSort(a, i + 1, right);
+        }
+
+    }
+
+    // 经典快排
+    private static void classicFastRow(int[] a,int L,int R){
+        if (L < R){
+            exchange(a,L+(int)(Math.random()*(R-L+1)),R);    // 随机快排
+            int[] p = dutchFlag(a, L, R);
+            classicFastRow(a,L,p[0]);
+            classicFastRow(a,p[1],R);
+        }
+    }
+    //荷兰国旗问题
+    private static int[] dutchFlag(int[] a,int L,int R){
+        int less = L-1,more = R;
+        while (L < more){
+            if (a[L] == a[R]){
+                L++;
+            }else if (a[L] < a[R]){
+                exchange(a,++less,L++);
+            }else {
+                exchange(a,--more,L);
+            }
+        }
+        exchange(a,more,R);
+        return new int[] {less,more};
+    }
+
 
     // 交换方法
     public static void exchange(int[] arr, int i, int j) {
@@ -159,20 +227,22 @@ public class ThreeKindsSort {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-       int length = 10;
-       int value = 100;
-       int times = 100000;
-       boolean result = true;
-        for (int i = 1; i <= times ; i++) {
-            int[] arr1 = randomSample(length,value);
+ public static void main(String[] args) {
+        int length = 10;
+        int value = 100;
+        int times = 100000;
+        boolean result = true;
+        for (int i = 1; i <= times; i++) {
+            int[] arr1 = randomSample(length, value);
             int[] arr2 = copyArray(arr1);
             // 在这里分别调用三种排序方法和类库中的方法比较
-            theBubbleSort(arr1);
+            //theBubbleSort(arr1);
             // selectionSort(arr1);
             // insertionSort(arr1);
+            //quickSort(arr1,0,arr1.length-1);
+            classicFastRow(arr1,0,arr1.length-1);
             right(arr2);
-            if (!toCompareArray(arr1,arr2)){
+            if (!toCompareArray(arr1, arr2)) {
                 result = false;
                 printArray(arr1);
                 printArray(arr2);
