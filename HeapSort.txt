@@ -1,0 +1,147 @@
+/*
+满二叉树：所有根结点的左孩子和右孩子都完整
+完全二叉树：叶子结点的上一层都完整，且叶子结点是从左往右依次排好
+满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树
+将一个数组抽象为完全二叉树：数组下标为 i ，
+       一个根节点的左孩子下标为：2*i+1；右孩子结点下标为：2*i+2，即左孩子结点下标加 1
+      一个结点的根结点下标为：(i-1) / 2
+堆：即完全二叉树，分为大根堆和小根堆
+大根堆：指任何一颗子树的最大值都是这颗子树的头部
+小根堆：指任何一颗子树的最小值都是这颗子树的头部
+heapify：大根堆中某一个结点的值变小，需要对其进行向下调整
+heapindex：将一个新的结点加入大根堆中，需要对其进行向上调
+
+对一个数组，数组中有 n 个元素，长度为 len，进行堆排序的步骤：
+   1. 将数组整体调整为一个大根堆
+   2. 将该堆最后一个位置的元素和堆顶交换，交换后数组最后一个位置已经有序
+   3. 再对未排好序的前 n-1 个元素再调整为大根堆，将堆最后一个位置的元素和堆顶交换
+   4. 重复上述步骤，直到所有元素都排好序
+
+ */
+
+import java.util.Arrays;
+import java.util.Random;
+public class HeapSort {
+    public static void main(String[] args) {
+        int length = 10;
+        int value = 100;
+        int times = 100000;
+        boolean result = true;
+        for (int i = 1; i <= times; i++) {
+            int[] arr1 = randomSample(length, value);
+            int[] arr2 = copyArray(arr1);
+            // 在这里分别调用三种排序方法和类库中的方法比较
+            sortCode(arr1);
+            right(arr2);
+            if (!toCompareArray(arr1, arr2)) {
+                result = false;
+                printArray(arr1);
+                printArray(arr2);
+                break;
+            }
+        }
+        System.out.println(result ? "成功！" : "失败！");
+    }
+
+    // 排序代码
+    private static void sortCode(int[] a){
+        if (a == null || a.length < 2){
+            return;
+        }
+        for (int i = 0; i < a.length; i++) {
+            heapindex(a,i);                // 建立大根堆
+        }
+        int heapSize = a.length;
+        exchange(a,0,--heapSize);         // 将堆头和堆尾交换
+        while (heapSize > 0){
+            heapify(a,0,heapSize);
+            exchange(a,0,--heapSize);
+        }
+    }
+
+    private static void heapindex(int[] a,int index){
+        while (a[index] > a[(index - 1)/2]){
+            exchange(a,index,(index-1)/2);
+            index = (index-1)/2;
+        }
+    }
+
+    private static void heapify(int[] a,int index,int heapSize){
+        int leftSub = 2*index + 1;
+        while (leftSub < heapSize){
+            int maxSub = leftSub + 1 < heapSize && a[leftSub] < a[leftSub+1] ? leftSub+1:leftSub;
+            maxSub = a[maxSub] < a[index] ? index:maxSub;
+            if (index==maxSub){
+                break;
+            }
+            exchange(a,index,maxSub);
+            index = maxSub;
+            leftSub = index*2 + 1;
+        }
+    }
+
+    // 交换方法
+    public static void exchange(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    // 绝对正确的方法
+    private  static int[] right(int[] ary) {
+        Arrays.sort(ary);
+        return ary;
+    }
+
+    // 随机产生样本器
+    private  static int[] randomSample(int length, int numericalRange) {
+        Random r = new Random();
+        int[] arr = new int[r.nextInt(length) + 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = r.nextInt(numericalRange);
+        }
+        return arr;
+    }
+
+    // 备份数组
+    private  static int[] copyArray(int[] ary) {
+        int[] copy = new int[ary.length];
+        if (ary == null) {
+            return null;
+        } else {
+            for (int i = 0; i < ary.length; i++) {
+                copy[i] = ary[i];
+            }
+        }
+        return copy;
+    }
+
+    // 比较数组
+    private  static boolean toCompareArray(int[] arr1, int[] arr2) {
+        if ((arr1 == null) && (arr2 == null))
+            return true;
+        else if ((arr1 == null) && (arr2 != null))
+            return false;
+        else if ((arr1 != null) && (arr2 == null))
+            return false;
+        else {
+            if (arr1.length != arr2.length)
+                return false;
+            else {
+                for (int i = 0; i < arr1.length; i++) {
+                    if (arr1[i] != arr2[i])
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // 打印数组
+    private  static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+}
