@@ -1,0 +1,43 @@
+/*
+题目：01字串
+问题描述
+对于长度为5位的一个01串，每一位都可能是0或1，一共有32种可能。它们的前几个是：
+00000
+00001
+00010
+00011
+00100
+请按从小到大的顺序输出这32种01串。
+输入格式
+本试题没有输入。
+输出格式
+输出32行，按从小到大的顺序每行一个长度为5的01串。
+样例输出
+00000
+00001
+00010
+00011
+
+DecimalFormat类：用于格式化十进制数字，让数字按照用户规定的格式输出
+     "0"：一个数字
+     "#"：一个数字不包括0
+     "."：小数分隔符的占位符
+     ","分组分隔符的占位符
+     ";"：分隔格式
+     "-"：缺省负数前缀
+     "%"：乘以100和座位百分比显示
+     "?"：乘以1000和作为千分制货币符显示
+static int parseInt(String s)：如果参数 s 以"0x"开头，返回十六进制整数；如果参数 s 以"0"开头，返回八或十六进制整数；
+                              如果参数 s 以"1-9"开头，返回十进制整数；
+Integer.toBinaryString()：将输入的Integer类型数据转换成二进制并以字符串类型返回
+
+ */
+import java.text.DecimalFormat;
+public class Test18 {
+    public static void main(String[] args) {
+        int[][] print = new int[32][5];
+        for (int i = 0; i < 32; i++) {
+            System.out.println(new DecimalFormat("00000").format((Integer.parseInt(Integer.toBinaryString(i)))));
+        }
+    }
+}
